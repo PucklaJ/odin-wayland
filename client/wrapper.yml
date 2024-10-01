@@ -1,0 +1,30 @@
+version: 0
+platforms: Linux Any
+wrapper:
+  language: c
+  in_headers: ../shared/wayland/src/wayland-client-protocol.h
+  out_header: ../shared/wayland/src/wayland-client-wrapper.h
+  out_source: ../shared/wayland/src/wayland-client-wrapper.c
+from:
+  language: c
+  static: ../lib/libwayland-client-wrapper.a
+  headers: ../shared/wayland/src/wayland-client-wrapper.h
+  extern:
+    - ../shared/wayland/src/*
+  overwrite:
+    functions:
+      wl_subcompositor_get_subsurface_wrapper.param.1.name: 'surface_'
+to:
+  language: odin
+  package: client
+  out: wrapper.odin
+  no_build_tag: true
+  trim_prefix: wl_
+  trim_suffix:
+    functions: _wrapper
+  extern:
+    sources:
+      ../shared/wayland/src/wayland-util.h: ../util
+      ../shared/wayland/src/wayland-client-protocol.h: client_protocol
+      ../shared/wayland/src/wayland-client-core.h: client_protocol
+    trim_prefix: true

@@ -1,0 +1,6 @@
+[submodule "shared/wayland"]
+	path = shared/wayland
+	url = https://gitlab.freedesktop.org/wayland/wayland.git
+[submodule "shared/wayland-protocols"]
+	path = shared/wayland-protocols
+	url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git

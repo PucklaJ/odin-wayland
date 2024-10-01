@@ -1,0 +1,29 @@
+version: 0
+platforms: Linux Any
+wrapper:
+  language: c
+  in_headers: ../shared/wayland/src/wayland-server-protocol.h
+  out_header: ../shared/wayland/src/wayland-server-wrapper.h
+  out_source: ../shared/wayland/src/wayland-server-wrapper.c
+from:
+  language: c
+  static: ../lib/libwayland-server-wrapper.a
+  headers: ../shared/wayland/src/wayland-server-wrapper.h
+  defines:
+    WL_HIDE_DEPRECATED: 1
+  extern:
+    - ../shared/wayland/src/*
+to:
+  language: odin
+  package: server
+  out: wrapper.odin
+  no_build_tag: true
+  trim_prefix: wl_
+  trim_suffix:
+    functions: _wrapper
+  extern:
+    sources:
+      ../shared/wayland/src/wayland-util.h: ../util
+      ../shared/wayland/src/wayland-server-protocol.h: server_protocol
+      ../shared/wayland/src/wayland-server-core.h: server_protocol
+    trim_prefix: true
