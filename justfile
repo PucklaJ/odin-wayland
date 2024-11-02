@@ -31,6 +31,7 @@ protocols: (make-directory BUILD_DIR)
     wayland-scanner client-header shared/wayland-protocols/stable/xdg-shell/xdg-shell.xml  shared/wayland/src/xdg-shell-client-protocol.h
     wayland-scanner server-header shared/wayland-protocols/stable/xdg-shell/xdg-shell.xml shared/wayland/src/xdg-shell-server-protocol.h
     wayland-scanner -c private-code shared/wayland-protocols/stable/xdg-shell/xdg-shell.xml shared/wayland/src/xdg-shell-client-protocol.c
+    sed -e 's/@WAYLAND_VERSION_MAJOR@/1/g' -e 's/@WAYLAND_VERSION_MINOR@/23/g' -e 's/@WAYLAND_VERSION_MICRO@/1/g' -e 's/@WAYLAND_VERSION@/1.23.1/g' shared/wayland/src/wayland-version.h.in > shared/wayland/src/wayland-version.h
 
 build-wayland: protocols client server (make-directory 'lib') (make-directory BUILD_DIR / 'obj')
     {{ CC }} {{ CC_FLAGS }} -c -o "{{ BUILD_DIR / 'obj/wayland-client-wrapper.o' }}" shared/wayland/src/wayland-client-wrapper.c
@@ -64,5 +65,6 @@ clean:
        shared/wayland/src/xdg-shell-client-wrapper.c \
        shared/wayland/src/wayland-server-wrapper.h \
        shared/wayland/src/wayland-server-wrapper.c \
+       shared/wayland/src/wayland-version.h \
        lib/ \
        build/
