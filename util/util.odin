@@ -21,7 +21,7 @@ list :: struct {
 fixed_t :: i32
 argument :: struct #raw_union {i: i32, u: u32, f: fixed_t, s: cstring, o: ^object, n: u32, a: ^array, h: i32, }
 dispatcher_func_t :: #type proc "c" (user_data: rawptr, target: rawptr, opcode: u32, msg: ^message, args: [^]argument) -> i32
-log_func_t :: #type proc "c" (fmt: cstring, args: rawptr)
+log_func_t :: #type proc "c" (fmt: cstring, #c_vararg var_args: ..any)
 iterator_result :: enum u32 {WL_ITERATOR_STOP = 0, WL_ITERATOR_CONTINUE = 1, }
 
 foreign import util_runic "system:wayland-client"
