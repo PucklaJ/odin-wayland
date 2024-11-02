@@ -6,9 +6,10 @@ from:
   headers:
     - ../shared/wayland/src/wayland-server-core.h
     - ../shared/wayland/src/wayland-server-protocol.h
+  includedirs:
+    - '../stdinc'
   defines:
     WL_HIDE_DEPRECATED: 1
-    bool: _Bool
   overwrite:
     functions:
       wl_resource_from_link.param.0.name: resource_
@@ -36,6 +37,7 @@ from:
       wl_subsurface_interface.name: wl_subsurface_interface_v
   extern:
     - ../shared/wayland/src/wayland-util.h
+    - ../stdinc/sys/types.h
 to:
   language: odin
   package: server
@@ -45,4 +47,9 @@ to:
   extern:
     sources:
       ../shared/wayland/src/wayland-util.h: util ../util
+      ../stdinc/sys/types.h: 'core:sys/linux'
+    remaps:
+      pid_t: Pid
+      uid_t: Uid
+      gid_t: Gid
     trim_prefix: true

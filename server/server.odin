@@ -1,5 +1,6 @@
 package server
 
+import "core:sys/linux"
 import util "../util"
 
 WL_DISPLAY_ERROR :: 0
@@ -447,12 +448,6 @@ subsurface_interface :: struct {
     set_sync: set_sync_func_ptr_anon_64,
     set_desync: set_desync_func_ptr_anon_65,
 }
-pid_t :: __pid_t
-uid_t :: __uid_t
-gid_t :: __gid_t
-__pid_t :: i32
-__uid_t :: u32
-__gid_t :: u32
 
 foreign import server_runic "system:wayland-server"
 
@@ -597,7 +592,7 @@ foreign server_runic {
     client_flush :: proc(client_p: ^client) ---
 
     @(link_name = "wl_client_get_credentials")
-    client_get_credentials :: proc(client_p: ^client, pid: ^pid_t, uid: ^uid_t, gid: ^gid_t) ---
+    client_get_credentials :: proc(client_p: ^client, pid: ^linux.Pid, uid: ^linux.Uid, gid: ^linux.Gid) ---
 
     @(link_name = "wl_client_get_fd")
     client_get_fd :: proc(client_p: ^client) -> i32 ---

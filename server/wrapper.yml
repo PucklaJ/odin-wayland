@@ -9,10 +9,13 @@ from:
   language: c
   static: ../lib/libwayland-server-wrapper.a
   headers: ../shared/wayland/src/wayland-server-wrapper.h
+  includedirs:
+    - '../stdinc'
   defines:
     WL_HIDE_DEPRECATED: 1
   extern:
     - ../shared/wayland/src/*
+    - ../stdinc/sys/types.h
 to:
   language: odin
   package: server
