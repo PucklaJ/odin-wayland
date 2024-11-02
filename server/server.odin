@@ -616,7 +616,7 @@ foreign server_runic {
     client_post_no_memory :: proc(client_p: ^client) ---
 
     @(link_name = "wl_client_post_implementation_error")
-    client_post_implementation_error :: proc(client_p: ^client, msg: cstring) ---
+    client_post_implementation_error :: proc(client_p: ^client, msg: cstring, #c_vararg var_args: ..any) ---
 
     @(link_name = "wl_client_add_resource_created_listener")
     client_add_resource_created_listener :: proc(client_p: ^client, listener_p: ^listener) ---
@@ -634,19 +634,19 @@ foreign server_runic {
     signal_emit_mutable :: proc(signal_p: ^signal, data: rawptr) ---
 
     @(link_name = "wl_resource_post_event")
-    resource_post_event :: proc(resource_p: ^resource, opcode: u32) ---
+    resource_post_event :: proc(resource_p: ^resource, opcode: u32, #c_vararg var_args: ..any) ---
 
     @(link_name = "wl_resource_post_event_array")
     resource_post_event_array :: proc(resource_p: ^resource, opcode: u32, args: [^]util.argument) ---
 
     @(link_name = "wl_resource_queue_event")
-    resource_queue_event :: proc(resource_p: ^resource, opcode: u32) ---
+    resource_queue_event :: proc(resource_p: ^resource, opcode: u32, #c_vararg var_args: ..any) ---
 
     @(link_name = "wl_resource_queue_event_array")
     resource_queue_event_array :: proc(resource_p: ^resource, opcode: u32, args: [^]util.argument) ---
 
     @(link_name = "wl_resource_post_error")
-    resource_post_error :: proc(resource_p: ^resource, code: u32, msg: cstring) ---
+    resource_post_error :: proc(resource_p: ^resource, code: u32, msg: cstring, #c_vararg var_args: ..any) ---
 
     @(link_name = "wl_resource_post_no_memory")
     resource_post_no_memory :: proc(resource_p: ^resource) ---

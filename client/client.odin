@@ -410,13 +410,13 @@ foreign client_runic {
     event_queue_destroy :: proc(queue: ^event_queue) ---
 
     @(link_name = "wl_proxy_marshal_flags")
-    proxy_marshal_flags :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface, version: u32, flags: u32) -> ^proxy ---
+    proxy_marshal_flags :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface, version: u32, flags: u32, #c_vararg var_args: ..any) -> ^proxy ---
 
     @(link_name = "wl_proxy_marshal_array_flags")
     proxy_marshal_array_flags :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface, version: u32, flags: u32, args: [^]util.argument) -> ^proxy ---
 
     @(link_name = "wl_proxy_marshal")
-    proxy_marshal :: proc(p: ^proxy, opcode: u32) ---
+    proxy_marshal :: proc(p: ^proxy, opcode: u32, #c_vararg var_args: ..any) ---
 
     @(link_name = "wl_proxy_marshal_array")
     proxy_marshal_array :: proc(p: ^proxy, opcode: u32, args: [^]util.argument) ---
@@ -431,10 +431,10 @@ foreign client_runic {
     proxy_wrapper_destroy :: proc(proxy_wrapper: rawptr) ---
 
     @(link_name = "wl_proxy_marshal_constructor")
-    proxy_marshal_constructor :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface) -> ^proxy ---
+    proxy_marshal_constructor :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface, #c_vararg var_args: ..any) -> ^proxy ---
 
     @(link_name = "wl_proxy_marshal_constructor_versioned")
-    proxy_marshal_constructor_versioned :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface, version: u32) -> ^proxy ---
+    proxy_marshal_constructor_versioned :: proc(proxy_p: ^proxy, opcode: u32, interface: ^util.interface, version: u32, #c_vararg var_args: ..any) -> ^proxy ---
 
     @(link_name = "wl_proxy_marshal_array_constructor")
     proxy_marshal_array_constructor :: proc(proxy_p: ^proxy, opcode: u32, args: [^]util.argument, interface: ^util.interface) -> ^proxy ---
