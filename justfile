@@ -58,12 +58,14 @@ clean:
     rm -rf shared/wayland/src/wayland-client-protocol.h \
        shared/wayland/src/wayland-server-protocol.h \
        shared/wayland/src/xdg-shell-client-protocol.h \
-       shared/wayland/src/xdg-shell-client-protocol.c \
+       shared/wayland/src/xdg-shell-private-code.c \
        shared/wayland/src/xdg-shell-server-protocol.h \
        shared/wayland/src/wayland-client-wrapper.h \
        shared/wayland/src/wayland-client-wrapper.c \
        shared/wayland/src/xdg-shell-client-wrapper.h \
        shared/wayland/src/xdg-shell-client-wrapper.c \
+       shared/wayland/src/xdg-shell-server-wrapper.h \
+       shared/wayland/src/xdg-shell-server-wrapper.c \
        shared/wayland/src/wayland-server-wrapper.h \
        shared/wayland/src/wayland-server-wrapper.c \
        shared/wayland/src/wayland-version.h \
