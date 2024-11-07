@@ -16,7 +16,11 @@ to:
   package: client
   out: client.odin
   no_build_tag: true
-  trim_prefix: wl_
+  trim_prefix:
+    functions: wl_
+    types: wl_
+    variables: wl_
+    constants: WL_
   extern:
     sources:
       ../shared/wayland/src/wayland-util.h: ../util

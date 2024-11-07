@@ -24,6 +24,7 @@ to:
   trim_prefix:
     - wl_
     - xdg_
+    - XDG_
   trim_suffix:
     functions: _wrapper
   extern:
