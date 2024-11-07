@@ -1,5 +1,5 @@
 default: bindings
-bindings: protocols client server util xdg-shell
+bindings: protocols client server util xdg-shell egl
 build: build-wayland build-xdg-shell
 
 BUILD_DIR := 'build'
@@ -26,6 +26,9 @@ xdg-shell:
     runic server/xdg-shell/rune.yml
     sed -i -e 's/client\.interface/util\.interface/g' -e 's/client\.array/util\.array/g' client/xdg-shell/xdg-shell.odin
     sed -i -e 's/server\.interface/util\.interface/g' -e 's/server\.array/util\.array/g' server/xdg-shell/xdg-shell.odin
+
+egl:
+    runic egl/rune.yml
 
 protocols: (make-directory BUILD_DIR)
     wayland-scanner client-header shared/wayland/protocol/wayland.xml shared/wayland/src/wayland-client-protocol.h

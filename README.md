@@ -8,6 +8,7 @@ Odin Bindings for the wayland client and server protocols. These bindings have b
 | --------  | ---------------------------------------------- | ---------------------------------------------- |
 | core      | `import wl "shared:wayland/client"`            | `import wl "shared:wayland/server"`            |
 | xdg-shell | `import xdg "shared:wayland/client/xdg-shell"` | `import xdg "shared:wayland/server/xdg-shell"` |
+| egl       | `import wl_egl "shared:wayland/egl"`           |                       ⛔                       |
 
 # Usage
 
